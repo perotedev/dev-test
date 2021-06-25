@@ -1,9 +1,9 @@
-# Use root/example as user/password credentials
+# For MongoDB use root/example as user/password credentials
 version: '3.1'
 
 services:
-
   mongo:
+    container_name: database-mongo
     image: mongo
     restart: always
     environment:
@@ -12,4 +12,15 @@ services:
       MONGO_INITDB_DATABASE: devtest
     ports:
       - "27017:27017"
+
+  app:
+    build: .
+    container_name: devtest-nestjs-app
+    entrypoint: ./.docker/entrypoint.sh
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/home/node/app
+    depends_on:
+      - mongo
 
