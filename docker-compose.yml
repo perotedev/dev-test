@@ -12,6 +12,8 @@ services:
       MONGO_INITDB_DATABASE: devtest
     ports:
       - "27017:27017"
+    volumes:
+      - "./database-scripts:/database-scripts"
 
   app:
     build: .

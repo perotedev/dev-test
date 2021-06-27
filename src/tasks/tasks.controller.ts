@@ -1,11 +1,10 @@
 import { TaskService } from './shared/task.service';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { Task } from './shared/task';
+import { Task } from './task.schema';
 
 @Controller('tasks')
 export class TasksController {
-  constructor(
-    private taskService: TaskService
+  constructor(private taskService: TaskService
     ) {}
 
   // Métodos da API
