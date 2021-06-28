@@ -12,7 +12,7 @@ export class StudentService {
   }
 
   async getById(id: string) {
-    return await this.studentModel.findById(id).exec();
+    return await this.studentModel.findById(id).populate(['tasks']).exec();
   }
 
   async create(student: Student) {
